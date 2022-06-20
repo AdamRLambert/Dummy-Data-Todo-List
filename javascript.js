@@ -42,8 +42,45 @@ for (let i = 0; arrayOfTodos.length ; i++) {
     toDolist.appendChild(toDotextNode)
 
     toDos.appendChild(toDolist)
-    // }   endloop
     }
+}
 
-} //end fucntion
+function clearTodos() {
+
+    const todos = document.getElementsByTagName ("ol")
+  
+  // loops over the HTML Collection of TDs and clears out the Xs and Os
+  for (i=0; i < todos.length; i++) {
+
+    // will log out the id of each square as it loops over them.
+    console.log(todos[i].id)
+
+    // sets the innerHTML to null to replace the "X" or "O"
+    todos[i].innerHTML = null
+  }  
+
+}
+
+
+function filterById () {
+
+const num = document.getElementById ("number_input").value
+
+const filteredArray = arrayOfTodos.filter(array => array.userId ==num)
+   
+for (let i = 0; filteredArray.length ; i++) {
+
+    let toDos = document.getElementById("todo-list")
+
+    let toDolist = document.createElement("li") 
+    
+    let toDotextNode = document.createTextNode(filteredArray[i].title)
+
+    toDolist.appendChild(toDotextNode)
+
+    toDos.appendChild(toDolist)
+}
+
+}
+
     

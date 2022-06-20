@@ -12,7 +12,8 @@ let arrayOfTodos = [
         "id": 2,
         "title": "delectus aut autem",
         "completed": false
-    }]
+        }
+]
     
     const fetchTodos = () => {
         fetch('https://jsonplaceholder.typicode.com/todos')
@@ -29,7 +30,7 @@ let arrayOfTodos = [
     
 // start loop here 
 
-for (let i = 0; arrayOfTodos.length ; i++) {
+for (let i = 0; i < arrayOfTodos.length; i++) {
    console.log (i)
   
 
@@ -66,7 +67,7 @@ function filterById () {
 
 const num = document.getElementById ("number_input").value
 
-const filteredArray = arrayOfTodos.filter(array => array.userId ==num)
+const filteredArray = arrayOfTodos.filter(array => array.userId ==num) // and completed is false
    
 for (let i = 0; filteredArray.length ; i++) {
 
@@ -76,11 +77,36 @@ for (let i = 0; filteredArray.length ; i++) {
     
     let toDotextNode = document.createTextNode(filteredArray[i].title)
 
+    let userId = document.createTextNode(filteredArray[i].userId)
+    
     toDolist.appendChild(toDotextNode)
-
+    toDolist.appendChild(userId)
     toDos.appendChild(toDolist)
 }
 
 }
 
+// new function to filer by UserID and completed
+// fiterl array where the userDI equals Input num and compelted equals true
     
+function filterByCompleted () {
+
+    const num = document.getElementById ("number_input").value
+    
+    const filteredArray = arrayOfTodos.filter(array => array.userId ==num && array.completed ==true) 
+       
+    for (let i = 0; i < filteredArray.length ; i++) {
+    
+        let toDos = document.getElementById("todo-list")
+    
+        let toDolist = document.createElement("li") 
+        
+        let toDotextNode = document.createTextNode(filteredArray[i].title)
+    
+        toDolist.appendChild(toDotextNode)
+    
+        toDos.appendChild(toDolist)
+
+    }
+
+}
